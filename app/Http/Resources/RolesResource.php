@@ -16,17 +16,22 @@ class RolesResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'success' => true,
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
             'created_at' => $this->created_at->format('d F, Y'),
-            'roles_id' => $this->roles[0]->id,
-            'roles_name' => $this->roles[0]->name,
-            'roles_guard' => $this->roles[0]->guard_name,
-            'permission_add' => $this->can('add'),
-            'permission_edit' => $this->can('edit'),
-            'permission_delete' => $this->can('delete'),
-            'permission_view' => $this->can('view'),
+            'roles' => [
+                'roles_id' => $this->roles[0]->id,
+                'roles_name' => $this->roles[0]->name,
+                'roles_guard' => $this->roles[0]->guard_name,
+            ],
+            'permissions' => [
+                'permission_add' => $this->can('add'),
+                'permission_edit' => $this->can('edit'),
+                'permission_delete' => $this->can('delete'),
+                'permission_view' => $this->can('view'),
+            ],
         ];
     }
 }

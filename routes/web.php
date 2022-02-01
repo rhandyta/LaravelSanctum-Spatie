@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -18,7 +19,6 @@ use Spatie\Permission\Models\Role;
 
 Route::get('/', function () {
 	// return view('welcome');
-	// $user = auth()->user();
 	// $user = User::find(9);
 	// $user->givePermissionTo('view');
 	// $user->assignRole('moderator');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RolesResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,9 +70,11 @@ class HomeController extends Controller
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json(['success' => false, 'message' => 'you unathorized'], 401);
         }
-        $user = User::where('email', $request->email)->firstOrFail();
+        User::where('email', $request->email)->firstOrFail();
+
+        $user = RolesResource::make($request->user());
         $token = $user->createToken('auth_token')->plainTextToken;
-        return response()->json(['success' => true, 'user' => $user, 'token' => $token, 'type_token' => 'Bearer'], 200);
+        return response()->json(['user' => $user, 'token' => $token, 'type_token' => 'Bearer'], 200);
     }
 
     // public function logout()

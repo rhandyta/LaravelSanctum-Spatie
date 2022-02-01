@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-	return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//return $request->user();
+//});
 
 Route::group(['prefix' => 'auth'], function () {
 	Route::post('register', [HomeController::class, 'register'])->name('register');
@@ -36,7 +36,7 @@ Route::get('all', function () {
 	return RolesResource::collection($users);
 });
 
-Route::middleware('auth:sanctum')->get('userbre', function (Request $request) {
+Route::middleware('auth:sanctum')->get('user', function (Request $request) {
 	$users = $request->user();
 	if ($users->can('view')) {
 		return RolesResource::make($request->user());
