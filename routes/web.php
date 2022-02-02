@@ -19,14 +19,14 @@ use Spatie\Permission\Models\Role;
 
 Route::get('/', function () {
 	// return view('welcome');
-	// $user = User::find(9);
-	// $user->givePermissionTo('view');
-	// $user->assignRole('moderator');
+	// $user = User::find(16);
+	// $user->givePermissionTo('view', 'delete');
 	// $user->assignRole('user');
-	// $role = Role::findById(2);
-	// $role->givePermissionTo('add post');
+	// $user->assignRole('user');
+	// $role = Role::findById(1);
+	// $role->givePermissionTo('add');
 	// $user->givePermissionTo('view post');
-	// $role->syncPermissions('add', 'edit', 'delete', 'view');
+	// $role->syncPermissions('view');
 	// $role->syncPermissions('view post');
 	// dd($user->can('view post'));
 	// dd($role);

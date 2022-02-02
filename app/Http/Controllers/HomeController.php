@@ -49,9 +49,12 @@ class HomeController extends Controller
             'password' => Hash::make($request->password),
         ]);
         if ($newUser) {
+            $id = User::find($newUser->id);
+            $id->assignRole('user');
             $token = $newUser->createToken('auth_token')->plainTextToken;
+            $user = RolesResource::make($id);
             return response()->json([
-                'success' => true, 'user' => $newUser, 'token' => $token, 'type_token' => 'Bearer'
+                'success' => true, 'user' => $user, 'token' => $token, 'type_token' => 'Bearer'
             ], 201);
         }
 
